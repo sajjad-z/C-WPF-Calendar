@@ -1,0 +1,145 @@
+﻿<Window x:Class="Calender.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:us="clr-namespace:Calender.UserControls"
+        FontFamily="Trebuchet MS" mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        AllowsTransparency="True" Background="Transparent" Height="590" Width="900">
+
+    <Grid>
+        <!--Grid Background-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="20 0 0 20" Background="#FEFEFE"/>
+
+            <Border CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" Grid.Column="1" Background="#C73F69"/>
+        </Grid>
+
+        <!--Grid Controls-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <!--Year Selection-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 30">
+                    <Button Style="{StaticResource button}">
+                        <fa:ImageAwesome Icon="AngleLeft" Style="{StaticResource angle}"/>
+                    </Button>
+
+                    <Button Content="2020" Style="{StaticResource button}"/>
+                    <Button Content="2021" Style="{StaticResource button}"/>
+                    <Button Content="2022" Style="{StaticResource button}" Foreground="#C73F69" FontSize="24"/>
+                    <Button Content="2023" Style="{StaticResource button}"/>
+                    <Button Content="2024" Style="{StaticResource button}"/>
+
+                    <Button Style="{StaticResource button}">
+                        <fa:ImageAwesome Icon="AngleRight" Style="{StaticResource angle}"/>
+                    </Button>
+                </StackPanel>
+
+                <!--Month Selection-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="1" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="2" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="3" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="4" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="5" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="6" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="7" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="8" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="9" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="10" Style="{StaticResource buttonMonth}"/>
+                    <Button Content="11" Style="{StaticResource buttonMonth}" Foreground="#C73F69" FontWeight="SemiBold"/>
+                    <Button Content="12" Style="{StaticResource buttonMonth}"/>
+                </StackPanel>
+
+                <Separator Height="0.8" Background="#CACACA" Margin="30 10"/>
+
+                <TextBlock Text="November" Foreground="#C73F69" FontSize="24" TextAlignment="Center" FontWeight="SemiBold" Margin="0 15 0 20"/>
+
+                <Calendar CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" Style="{DynamicResource CalendarStyle1}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <!--Titles-->
+                <StackPanel Margin="30 45 30 10" Orientation="Horizontal">
+                    <TextBlock Text="16" FontSize="50" Foreground="#FFFFFF"/>
+
+                    <StackPanel Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="November" Foreground="#FFFFFF" FontSize="24"/>
+                        <TextBlock Text="Monday" Foreground="#EBA5BB" FontSize="14"/>
+                    </StackPanel>
+
+                    <Button Style="{StaticResource buttonBig}" Margin="112 0 5 0">
+                        <fa:ImageAwesome Icon="AngleLeft" Style="{StaticResource angleBig}"/>
+                    </Button>
+
+                    <Button Style="{StaticResource buttonBig}">
+                        <fa:ImageAwesome Icon="AngleRight" Style="{StaticResource angleBig}"/>
+                    </Button>
+                </StackPanel>
+
+                <TextBlock Text="5 tasks- 2 dates left" Foreground="#EBA5BB" FontSize="16" Margin="35 0 20 0"/>
+
+                <!--Add Notes-->
+                <Border Background="#CD5278" CornerRadius="10" HorizontalAlignment="Center" Width="355" Margin="0 30 0 20" Padding="17 15 5 15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <fa:ImageAwesome Icon="Pencil" Width="15" Height="15" Foreground="#EBA5BB"/>
+                                <TextBlock x:Name="lblNote" MouseDown="lblNote_MouseDown" Text="Add Note" Style="{StaticResource textHint}"/>
+                                <TextBox Name="txtNote" TextChanged="txtNote_TextChanged" Style="{StaticResource textBox}"/>
+                            </Grid>
+
+                            <Separator Margin="0 12 0 11" Background="#C14269" Height="0.8"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <fa:ImageAwesome Icon="Bell" Width="15" Height="15" Foreground="#EBA5BB"/>
+                                <TextBlock x:Name="lblTime" MouseDown="lblTime_MouseDown" Text="_ _ : _ _  -  _ _ : _ _" Style="{StaticResource textHint}"/>
+                                <TextBox Name="txtTime" TextChanged="txtTime_TextChanged" Style="{StaticResource textBox}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                        <Button Style="{StaticResource button}" Grid.Column="1">
+                            <fa:ImageAwesome Icon="PlusCircle" Width="28" Height="28" Foreground="#f9f9f9" />
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!--Notes-->
+                <us:Item Title="Post on social networks" Time="09:45 - 10:30" Color="#EBA5BB" Icon="CheckCircle" IconBell="BellSlash"/>
+                <us:Item Title="Review the app design" Time="11:30 - 12:00" Color="#EBA5BB" Icon="CheckCircle" IconBell="BellSlash"/>
+                <us:Item Title="Build a demo of the app" Time="14:00 - 15:30" Color="#f1f1f1" Icon="CircleThin" IconBell="Bell"/>
+                <us:Item Title="Dinner with John Doe" Time="20:15 - 21:45" Color="#f1f1f1" Icon="CircleThin" IconBell="Bell"/>
+                <us:Item Title="Send email to Mohammad" Time="23:00 - 23:20" Color="#f1f1f1" Icon="CircleThin" IconBell="Bell"/>
+
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
